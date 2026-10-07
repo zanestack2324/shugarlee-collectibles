@@ -3,4 +3,4 @@ Allow: /
 Disallow: /product.html
 Disallow: /checkout.html
 
-Sitemap: /sitemap.xml
+Sitemap: https://shugarlee-collectibles.vercel.app/sitemap.xml
