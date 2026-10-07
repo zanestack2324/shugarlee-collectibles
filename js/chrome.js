@@ -185,14 +185,10 @@
       '<path d="M120 0 H52 C14 120 84 240 52 360 C20 480 84 600 52 720 C20 840 84 924 52 1000 H120 Z" fill="currentColor"/></svg></div>';
   }
 
-  function cursorHTML() {
-    return '<div class="cursor" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#d-star"></use></svg></div>';
-  }
-
-  /* ── inject ──────────────────────────────────────────── */
-  document.body.insertAdjacentHTML("afterbegin", sprite + loaderHTML() + bannerHTML() + headerHTML());
+document.body.insertAdjacentHTML("afterbegin",
+    sprite + loaderHTML() + bannerHTML() + headerHTML());
   document.body.insertAdjacentHTML("beforeend",
-    menuHTML() + cartHTML() + modalHTML() + footerHTML() + transHTML() + cursorHTML() +
+    menuHTML() + cartHTML() + modalHTML() + footerHTML() + transHTML() +
     '<div class="toasts" role="status" aria-live="polite"></div>' +
     '<a class="skip" href="#main">Skip to content</a>');
 
@@ -473,33 +469,4 @@
   window.addEventListener("load", function () { setTimeout(dismissLoader, 450); });
   setTimeout(dismissLoader, 3200);
 
-  /* ── custom cursor ───────────────────────────────────── */
-  if (window.matchMedia("(pointer: fine)").matches &&
-      !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    var cur = $(".cursor");
-    document.documentElement.classList.add("has-cursor");
-    var tx = -100, ty = -100, cx = -100, cy = -100, on = false;
-
-    window.addEventListener("mousemove", function (e) {
-      tx = e.clientX; ty = e.clientY;
-      if (!on) { on = true; cx = tx; cy = ty; cur.classList.add("is-on"); }
-    }, { passive: true });
-    window.addEventListener("mousedown", function () { cur.classList.add("is-down"); });
-    window.addEventListener("mouseup", function () { cur.classList.remove("is-down"); });
-    document.addEventListener("mouseover", function (e) {
-      if (e.target.closest("a, button, input, .chip, .pcard, .plate")) cur.classList.add("is-hover");
-    });
-    document.addEventListener("mouseout", function (e) {
-      if (e.target.closest("a, button, input, .chip, .pcard, .plate")) cur.classList.remove("is-hover");
-    });
-    document.addEventListener("mouseleave", function () { cur.classList.remove("is-on"); });
-    document.addEventListener("mouseenter", function () { if (on) cur.classList.add("is-on"); });
-
-    (function loop() {
-      cx += (tx - cx) * 0.22;
-      cy += (ty - cy) * 0.22;
-      cur.style.transform = "translate3d(" + cx + "px," + cy + "px,0)";
-      requestAnimationFrame(loop);
-    })();
-  }
-})();
+  })();

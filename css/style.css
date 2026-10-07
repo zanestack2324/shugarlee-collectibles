@@ -70,9 +70,6 @@ button, input { font: inherit; color: inherit; border: 0; background: none; }
 button { cursor: pointer; }
 ::selection { background: var(--amber); color: var(--brown); }
 
-html.has-cursor, html.has-cursor * { cursor: none !important; }
-html.has-cursor input, html.has-cursor textarea { cursor: text !important; }
-
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
@@ -410,20 +407,7 @@ html.has-cursor input, html.has-cursor textarea { cursor: text !important; }
 }
 .ptrans__edge svg { width: 100%; height: 100%; }
 
-/* ── Custom cursor ──────────────────────────────────────── */
-.cursor {
-  position: fixed; top: 0; left: 0; z-index: 5000;
-  width: 3rem; height: 3rem;
-  margin: -1.5rem 0 0 -1.5rem;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity .3s;
-  color: var(--brown);
-}
-.cursor.is-on { opacity: 1; }
-.cursor svg { width: 100%; height: 100%; transition: transform .35s var(--ease-expo); }
-.cursor.is-hover svg { transform: scale(2.1) rotate(35deg); }
-.cursor.is-down svg { transform: scale(.7); }
+@media (min-width: 1024px) { .nlmodal__title { font-size: 6.4rem; } }
 
 /* ── Toasts ─────────────────────────────────────────────── */
 .toasts {
@@ -497,7 +481,6 @@ html.has-cursor input, html.has-cursor textarea { cursor: text !important; }
 .nlmodal__doodle { position: absolute; width: 8rem; opacity: .5; }
 .nlmodal__doodle.--l { left: -1rem; bottom: 4rem; transform: rotate(-20deg); }
 .nlmodal__doodle.--r { right: -1rem; top: 6rem; transform: rotate(16deg); }
-@media (min-width: 1024px) { .nlmodal__title { font-size: 6.4rem; } }
 
 /* newsletter form */
 .nlform {
@@ -608,23 +591,6 @@ html.has-cursor input, html.has-cursor textarea { cursor: text !important; }
   font-weight: 600;
   opacity: .8;
 }
-.hero__note {
-  position: absolute;
-  z-index: 3;
-  transform: rotate(-7deg);
-  font-size: 2.6rem;
-  color: var(--brown);
-  max-width: 22rem;
-}
-.hero__note.--a { top: 17%; left: 7%; }
-.hero__note.--b { bottom: 24%; right: 6%; transform: rotate(6deg); }
-.hero__note svg { width: 6rem; margin-top: .6rem; color: var(--green); }
-.hero__doodle { position: absolute; z-index: 1; width: 8rem; height: 8rem; }
-.hero__doodle svg { width: 100%; height: 100%; display: block; }
-.hero__doodle.--s1 { top: 12%; right: 18%; width: 6.4rem; color: var(--amber); }
-.hero__doodle.--s2 { bottom: 16%; left: 14%; width: 7.6rem; color: var(--pink); }
-.hero__doodle.--s3 { top: 30%; left: 4%; width: 5rem; color: var(--green); }
-.hero__doodle.--s4 { top: 8%; left: 40%; width: 4.4rem; color: var(--brown); opacity: .6; }
 .hero__cta {
   position: absolute;
   bottom: 4.6rem; left: 50%;
@@ -634,11 +600,6 @@ html.has-cursor input, html.has-cursor textarea { cursor: text !important; }
 }
 .hero__cta .arrow { width: 2.4rem; color: var(--brown); animation: bounceY 1.6s ease-in-out infinite; }
 @keyframes bounceY { 50% { transform: translateY(.8rem); } }
-@media (min-width: 1024px) {
-  .hero__note { font-size: 3.2rem; }
-  .hero__note.--a { top: 20%; left: 12%; }
-  .hero__note.--b { bottom: 26%; right: 12%; }
-}
 
 /* ── Product cards / grids ──────────────────────────────── */
 .grid-products {
@@ -1362,86 +1323,67 @@ html.has-cursor input, html.has-cursor textarea { cursor: text !important; }
 .stagger > * { will-change: transform, opacity; }
 
 /* ══════════════════════════════════════════════════════════
-   HERO PHOTOS — base rules are the mobile layout
+   HERO — full-frame photos in a clean 2×2 grid.
+   Base rules are the mobile layout. A fixed-height middle
+   corridor keeps the logo clear of the photos on every screen.
    ══════════════════════════════════════════════════════════ */
 .hero { height: 235svh; }
-.hero__photos { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+
+.hero__photos {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 34vh auto;
+  align-content: center;
+  justify-items: center;
+  gap: 0 1.4rem;
+  padding: 6vh 6vw;
+}
+
 .hero__photo {
-  position: absolute;
   margin: 0;
-  width: 11rem;
-  padding: .7rem .7rem 2rem;
+  width: min(40vw, 20rem);
+  padding: .7rem .7rem 1.6rem;
   background: #fffdf6;
-  border-radius: 1.2rem;
-  box-shadow: 0 1.6rem 3.6rem rgba(107, 62, 40, .3);
+  border-radius: 1.3rem;
+  box-shadow: 0 1.5rem 3.4rem rgba(107, 62, 40, .3);
 }
 .hero__photo img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: .5rem;
+  border-radius: .6rem;
   background: var(--tile);
 }
-.hero__photo.--p1 { top: 6%; left: -3%; transform: rotate(-8deg); }
-.hero__photo.--p2 { top: 7%; right: -3%; transform: rotate(7deg); width: 10.4rem; }
-.hero__photo.--p3 { bottom: 13%; left: -4%; transform: rotate(7deg); width: 10.4rem; }
-.hero__photo.--p4 { bottom: 14%; right: -4%; transform: rotate(-7deg); }
+.hero__photo.--p1 { grid-area: 1 / 1; transform: rotate(-3.2deg); }
+.hero__photo.--p2 { grid-area: 1 / 2; transform: rotate(3.2deg); }
+.hero__photo.--p3 { grid-area: 3 / 1; transform: rotate(3deg); }
+.hero__photo.--p4 { grid-area: 3 / 2; transform: rotate(-3deg); }
 
-/* notes: centered sticker layout at every width (clear of the photos) */
-.hero__note.--a {
-  top: 3%; bottom: auto; left: 50%; right: auto;
-  transform: translateX(-50%) rotate(-7deg);
-  text-align: center;
-  font-size: 2rem;
-  max-width: 17rem;
-}
-.hero__note.--b {
-  bottom: 15%; top: auto; right: 50%; left: auto;
-  transform: translateX(50%) rotate(6deg);
-  text-align: center;
-  font-size: 2rem;
-  max-width: 17rem;
-}
+/* hero logo: always centered, scales with the viewport */
+.hero__logo { height: auto; }
 
 @media (min-width: 768px) {
-  .hero__photo.--p1 { top: 12%; left: 4%; width: 20rem; }
-  .hero__photo.--p2 { top: 14%; right: 4%; width: 19rem; }
-  .hero__photo.--p3 { bottom: 14%; left: 5%; width: 19rem; }
-  .hero__photo.--p4 { bottom: 15%; right: 5%; width: 20rem; }
-  .hero__note.--a { top: 7%; font-size: 2.6rem; max-width: 22rem; }
-  .hero__note.--b { bottom: 13%; font-size: 2.6rem; max-width: 22rem; }
+  .hero__photo { width: min(42vw, 23rem); }
 }
 @media (min-width: 1024px) {
   .hero { height: 260svh; }
-  .hero__photo.--p1 { top: 11%; left: 6%; width: 25rem; }
-  .hero__photo.--p2 { top: 12%; right: 6%; width: 24rem; }
-  .hero__photo.--p3 { bottom: 14%; left: 7%; width: 24rem; }
-  .hero__photo.--p4 { bottom: 15%; right: 7%; width: 25rem; }
-  .hero__note.--a { top: 8%; font-size: 3.2rem; max-width: 26rem; }
-  .hero__note.--b { bottom: 14%; font-size: 3.2rem; max-width: 26rem; }
+  .hero__photo { width: min(36vw, 24rem); }
 }
 
 /* ── Hero: phone polish (≤767px) ────────────────────────── */
 @media (max-width: 767px) {
   .hero__logo { width: min(74rem, 90vw); }
   .hero__tags { font-size: 1.15rem; letter-spacing: .18em; margin-top: 2.4rem; }
-  .hero__note svg { width: 4.6rem; margin-top: .4rem; }
-  .hero__doodle.--s1 { top: 32%; right: 5%; width: 5.2rem; }
-  .hero__doodle.--s2 { bottom: 9%; left: 7%; width: 5.6rem; }
-  .hero__doodle.--s3 { top: 37%; left: 4%; width: 4.4rem; }
-  .hero__doodle.--s4 { display: none; }
   .hero__cta { bottom: 2.8rem; gap: 1rem; }
   .hero__blob.--c { display: none; }
 }
 @media (max-width: 360px) {
-  .hero__photo.--p1 { width: 9.4rem; }
-  .hero__photo.--p2 { width: 8.8rem; }
-  .hero__note.--a { top: 2%; font-size: 1.8rem; }
-  .hero__note.--b { font-size: 1.8rem; bottom: 14%; }
+  .hero__photo { width: min(40vw, 18rem); }
   .hero__tags { letter-spacing: .12em; font-size: 1.02rem; }
 }
 @media (orientation: landscape) and (max-height: 540px) {
-  .hero__photo, .hero__note, .hero__doodle { display: none; }
+  .hero__photo { display: none; }
   .hero__tags { margin-top: 1.2rem; }
   .hero__cta { bottom: 1.6rem; }
 }

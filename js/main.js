@@ -493,9 +493,7 @@
     tl.fromTo(".hero__logo", { scale: .72, opacity: 0, rotation: -5 }, { scale: 1, opacity: 1, rotation: 0, duration: 1.4 }, .08)
       .fromTo(".hero__tags", { y: 26, opacity: 0 }, { y: 0, opacity: .8, duration: .9 }, .42)
       .fromTo(".hero__photo", { y: 54, scale: .55, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 1.2, stagger: .11 }, .3)
-      .fromTo(".hero__note", { y: 34, opacity: 0, rotation: -14 }, { y: 0, opacity: 1, rotation: 0, duration: 1, stagger: .14 }, .55)
-      .fromTo(".hero__doodle", { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 1.1, stagger: .09 }, .35)
-      .fromTo(".hero__cta", { y: 46, opacity: 0 }, { y: 0, opacity: 1, duration: .9 }, .8);
+      .fromTo(".hero__cta", { y: 46, opacity: 0 }, { y: 0, opacity: 1, duration: .9 }, .55);
   }
   document.addEventListener("sc:ready", heroIntro);
   setTimeout(function () { heroIntro(); }, 4200);
@@ -507,12 +505,9 @@
     htl.to(".hero__logo", { scale: 1.12, y: -46, duration: 1.4 }, 0)
       .to(".hero__tags", { opacity: 0, y: -36, duration: .6 }, 0)
       .to(".hero__photo", { yPercent: -85, opacity: 0, duration: 1.5, stagger: .07 }, 0)
-      .to(".hero__note", { opacity: 0, y: -60, duration: .6, stagger: .12 }, .1)
       .to(".hero__cta", { opacity: 0, y: 34, duration: .5 }, .55)
       .to(".hero__blob.--a", { xPercent: 22, yPercent: 30, scale: 1.35, rotation: 40, duration: 1.6 }, 0)
-      .to(".hero__blob.--b", { xPercent: 18, yPercent: -26, scale: 1.3, rotation: -30, duration: 1.6 }, 0)
-      .to(".hero__blob.--c", { xPercent: 120, yPercent: -60, scale: .6, duration: 1.6 }, 0)
-      .to(".hero__doodle", { yPercent: -90, rotation: 70, duration: 1.6, stagger: .06 }, 0);
+      .to(".hero__blob.--b", { xPercent: 18, yPercent: -26, scale: 1.3, rotation: -30, duration: 1.6 }, 0);
   }
 
   /* floating doodle loops */
