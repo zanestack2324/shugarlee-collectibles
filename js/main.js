@@ -348,11 +348,12 @@
       fieldHTML("co-state", "State", "text", "Lagos", "autocomplete=\"address-level1\"") +
       "</div></section>" +
       '<section class="co-block"><h2 class="co-block__title"><i>4</i>Payment</h2>' +
+      '<p class="co-block__lead">Payment is made before delivery — we confirm your order, then share secure payment details.</p>' +
       '<div class="co-pay">' +
-      '<label class="co-pay__opt"><input type="radio" name="co-pay" value="Card / bank transfer">' +
-      "<span><b>Card or bank transfer</b><small>Pay now — your piece ships same day</small></span></label>" +
-      '<label class="co-pay__opt"><input type="radio" name="co-pay" value="Pay on delivery">' +
-      "<span><b>Pay on delivery</b><small>Cash on arrival — available nationwide</small></span></label>" +
+      '<label class="co-pay__opt"><input type="radio" name="co-pay" value="Card / bank transfer" checked>' +
+      "<span><b>Card or bank transfer</b><small>Pay before delivery — your piece ships once payment clears</small></span></label>" +
+      '<label class="co-pay__opt"><input type="radio" name="co-pay" value="USSD / direct transfer">' +
+      "<span><b>USSD or direct transfer</b><small>Pay before delivery — transfer to our business account</small></span></label>" +
       "</div></section>" +
       "</form>" +
       "</div>" +
@@ -457,7 +458,7 @@
         '<p class="checkout__doneText">Your order <b>' + order + "</b> is in. We will call you on <b>" +
         esc(phone) +
         "</b> shortly to confirm delivery details.</p>" +
-        '<div class="checkout__doneTotal"><span>Paid via</span><b>' + esc(pay.value) + "</b>" +
+        '<div class="checkout__doneTotal"><span>Payment</span><b>' + esc(pay.value) + "</b>" +
         "<span>Order total</span><b>" + formatNaira(t.total) + "</b></div>" +
         '<a class="hbtn is-green" href="shop.html">Keep collecting</a>' +
         '<p class="checkout__doneHand hand">packed with love — see you soon!</p>' +

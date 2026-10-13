@@ -1775,3 +1775,61 @@ button { cursor: pointer; }
   .js .will-animate, .js .split .ch { opacity: 1 !important; transform: none !important; }
   .mq { animation: none; }
 }
+
+/* ── Wordmark sub-line: "Collectibles" under the Shugarlee logo ──── */
+.wordmark__sub {
+  display: block;
+  font-family: var(--hand);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  text-align: center;
+  color: inherit;
+  margin-top: .5em;
+  text-indent: .3em;
+}
+.hdr__logo { display: flex; flex-direction: column; align-items: center; }
+.hdr__logo .wordmark__sub { font-size: 1rem; margin-top: .05rem; color: var(--brown); opacity: .85; }
+.hero__inner .wordmark__sub {
+  font-size: clamp(1.4rem, 3.4vw, 2.5rem);
+  letter-spacing: .42em; text-indent: .42em;
+  color: var(--cream);
+  margin-top: 1.2rem;
+  text-shadow: 0 .2rem 1rem rgba(0, 0, 0, .65);
+}
+.tagline .wordmark__sub {
+  font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+  letter-spacing: .4em; text-indent: .4em;
+  color: var(--brown);
+  margin-top: 1rem;
+}
+.footer .wordmark__sub {
+  font-size: 1.5rem;
+  letter-spacing: .4em; text-indent: .4em;
+  color: var(--cream);
+  margin: .9rem auto 0;
+}
+.wordmark__sub--loader {
+  font-size: 1.25rem;
+  letter-spacing: .34em; text-indent: .34em;
+  color: var(--brown);
+  margin: -1.6rem auto 1.6rem;
+}
+.wordmark__sub--modal {
+  font-size: 1.25rem;
+  letter-spacing: .34em; text-indent: .34em;
+  color: var(--navy);
+  margin: -1.2rem auto 2.2rem;
+}
+@media (min-width: 1024px) {
+  .hdr__logo .wordmark__sub { font-size: 1.25rem; }
+}
+
+/* Pre-payment only — no pay-on-delivery */
+.co-block__lead {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  opacity: .8;
+  margin: -.6rem 0 1.8rem;
+}

@@ -50,7 +50,7 @@
       "Free nationwide delivery over " + "\u20A6" + "200,000",
       "New drop live now",
       "Small-batch collectibles",
-      "Pay on delivery available",
+      "Secure payment before delivery",
       "Once it is gone, it is gone"
     ];
     var star = '<svg class="mq-star" aria-hidden="true"><use href="#d-spark"></use></svg>';
@@ -67,7 +67,8 @@
   function headerHTML() {
     return '<header class="hdr"><nav class="hdr__nav" aria-label="Main">' +
       '<a class="hdr__logo" href="index.html" aria-label="Shugarlee Collectibles — home">' +
-      '<img src="' + LOGO + '" alt="Shugarlee Collectibles" loading="eager" width="420" height="140"></a>' +
+      '<img src="' + LOGO + '" alt="Shugarlee Collectibles" loading="eager" width="420" height="140">' +
+      '<span class="wordmark__sub">Collectibles</span></a>' +
       '<ul class="hdr__links">' +
       '<li><a href="shop.html" data-nav="shop">Shop</a></li>' +
       '<li><a href="bags.html" data-nav="bags">Bags</a></li>' +
@@ -150,6 +151,7 @@
       '<nav class="footer__social" aria-label="Social media">' + socials + "</nav>" +
       '<p class="footer__contact">Queen Vivian (CEO) · <a href="' + WHATSAPP + '" target="_blank" rel="noopener">WhatsApp 08158011909</a></p>' +
       '<img class="footer__logo" src="' + LOGO + '" alt="Shugarlee Collectibles" loading="lazy">' +
+      '<span class="wordmark__sub wordmark__sub--footer">Collectibles</span>' +
       '<p class="footer__copy">© 2026 Shugarlee Collectibles — all treats reserved.</p>' +
       "</div></footer>";
   }
@@ -162,6 +164,7 @@
       '<svg class="nlmodal__doodle --l" viewBox="0 0 100 100" aria-hidden="true"><use href="#d-star"></use></svg>' +
       '<svg class="nlmodal__doodle --r" viewBox="0 0 100 100" aria-hidden="true"><use href="#d-heart"></use></svg>' +
       '<img class="nlmodal__logo" src="' + LOGO + '" alt="">' +
+      '<span class="wordmark__sub wordmark__sub--modal">Collectibles</span>' +
       '<h2 class="nlmodal__title">Want first dibs?</h2>' +
       '<p class="nlmodal__text">Join the newsletter for early access, sweet discounts and LOTS of surprises.</p>' +
       '<form class="nlform js-nlform" novalidate><label class="sr-only" for="m-email">Email address</label>' +
@@ -174,6 +177,7 @@
   function loaderHTML() {
     return '<div class="loader" aria-hidden="true"><div class="loader__inner">' +
       '<img class="loader__logo" src="' + LOGO + '" alt="">' +
+      '<span class="wordmark__sub wordmark__sub--loader">Collectibles</span>' +
       '<div class="loader__bar"><i></i></div>' +
       '<p class="loader__note">unpacking something sweet…</p>' +
       "</div></div>";

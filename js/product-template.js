@@ -86,7 +86,7 @@
       '<div class="acc">' +
       accItem("The piece", esc(p.desc) + " Part of the Shugarlee Collectibles drop — collected in small runs, so each one keeps its collectible spark.") +
       accItem("Delivery &amp; returns", "Nationwide delivery in 2–5 working days. Free over \u20A6200,000. Changed your mind? Returns accepted within 7 days, unworn and boxed.") +
-      accItem("Payment", "Card, bank transfer or USSD — plus pay-on-delivery in Lagos. Instalments available on request, just ask.") +
+      accItem("Payment", "Card, bank transfer or USSD \u2014 payment is made before delivery. Instalments available on request, just ask.") +
       "</div></div></div></section>" +
       '<section class="related">' + waveHTML("#fffbec") +
       '<h2 class="related__title title title--green" data-split>More from ' + meta.plural + "</h2>" +

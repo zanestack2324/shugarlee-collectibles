@@ -24,13 +24,17 @@
   <section class="hero" aria-label="Welcome">
     <div class="hero__stick">
       <div class="hero__media" aria-hidden="true">
-        <video class="hero__video" src="hero_video.mp4" autoplay muted loop playsinline poster="Hero 1.jpg" preload="metadata"></video>
+        <video class="hero__video" autoplay muted loop playsinline poster="Hero 1.jpg" preload="metadata">
+          <source src="hero_video.webm" type="video/webm">
+          <source src="hero_video.mp4" type="video/mp4">
+        </video>
         <div class="hero__overlay"></div>
       </div>
 
       <div class="hero__inner">
         <h1 class="sr-only">Shugarlee Collectibles — bags, jewelry, shoes and wigs</h1>
         <img class="hero__logo" src="Glossy Shugarlee Script Logo.png" alt="Shugarlee Collectibles" width="2006" height="784" fetchpriority="high">
+        <span class="wordmark__sub wordmark__sub--hero">Collectibles</span>
         <p class="hero__tags">Bags · Jewelry · Shoes · Wigs</p>
       </div>
 
@@ -158,6 +162,7 @@
 
     <p class="tagline__text" data-split>Shugarlee dreams <strong>come to life</strong></p>
     <img class="tagline__logo" src="Glossy Shugarlee Script Logo.png" alt="Shugarlee Collectibles" loading="lazy">
+    <span class="wordmark__sub wordmark__sub--tagline">Collectibles</span>
   </section>
 
   <!-- ══ ABOUT ═════════════════════════════════════════ -->
