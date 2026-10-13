@@ -95,8 +95,8 @@ button { cursor: pointer; }
 .js .split .w {
   display: inline-block;
   overflow: hidden;
-  padding: .1em .03em .14em;
-  margin: -.1em -.03em -.14em;
+  padding: .18em .1em .24em;
+  margin: -.18em -.1em -.24em;
   vertical-align: bottom;
 }
 
@@ -555,21 +555,8 @@ button { cursor: pointer; }
   overflow: hidden;
   display: flex; align-items: center; justify-content: center;
 }
-.hero__blob {
-  position: absolute;
-  border-radius: 62% 38% 55% 45% / 48% 56% 44% 52%;
-  filter: blur(.2rem);
-  animation: blobMorph 14s ease-in-out infinite alternate;
-}
-.hero__blob.--a { width: 56rem; height: 54rem; background: var(--amber); top: -14rem; right: -12rem; opacity: .55; }
-.hero__blob.--b { width: 44rem; height: 46rem; background: var(--green); bottom: -12rem; left: -10rem; opacity: .38; animation-delay: -6s; }
-.hero__blob.--c { width: 26rem; height: 26rem; background: var(--pink); top: 22%; left: 8%; opacity: .22; animation-delay: -3s; }
-@keyframes blobMorph {
-  0% { border-radius: 62% 38% 55% 45% / 48% 56% 44% 52%; transform: rotate(0deg) scale(1); }
-  100% { border-radius: 44% 56% 38% 62% / 58% 42% 58% 42%; transform: rotate(14deg) scale(1.07); }
-}
 .hero__inner {
-  position: relative; z-index: 2;
+  position: relative; z-index: 3;
   text-align: center;
   width: 100%;
   padding-inline: var(--gutter);
@@ -581,7 +568,7 @@ button { cursor: pointer; }
 .hero__logo {
   width: min(74rem, 86vw);
   margin: 0 auto;
-  filter: drop-shadow(0 2.4rem 4rem rgba(107, 62, 40, .22));
+  filter: drop-shadow(0 2.4rem 4rem rgba(0, 0, 0, .55));
 }
 .hero__tags {
   margin-top: 3.4rem;
@@ -589,7 +576,9 @@ button { cursor: pointer; }
   letter-spacing: .5em;
   text-transform: uppercase;
   font-weight: 600;
-  opacity: .8;
+  color: var(--cream);
+  text-shadow: 0 .2rem 1.2rem rgba(0, 0, 0, .7);
+  opacity: .95;
 }
 .hero__cta {
   position: absolute;
@@ -598,7 +587,7 @@ button { cursor: pointer; }
   z-index: 4;
   display: flex; flex-direction: column; align-items: center; gap: 1.4rem;
 }
-.hero__cta .arrow { width: 2.4rem; color: var(--brown); animation: bounceY 1.6s ease-in-out infinite; }
+.hero__cta .arrow { width: 2.4rem; color: var(--cream); filter: drop-shadow(0 .2rem .8rem rgba(0, 0, 0, .7)); animation: bounceY 1.6s ease-in-out infinite; }
 @keyframes bounceY { 50% { transform: translateY(.8rem); } }
 
 /* ── Product cards / grids ──────────────────────────────── */
@@ -832,6 +821,10 @@ button { cursor: pointer; }
   border-radius: 58% 42% 46% 54% / 52% 44% 56% 48%;
   animation: blobMorph 11s ease-in-out infinite alternate;
   box-shadow: .6rem .8rem 0 rgba(107, 62, 40, .16);
+}
+@keyframes blobMorph {
+  0% { border-radius: 58% 42% 46% 54% / 52% 44% 56% 48%; transform: rotate(0deg); }
+  100% { border-radius: 44% 56% 56% 44% / 58% 42% 58% 42%; transform: rotate(10deg); }
 }
 .fcard:nth-child(2) .fcard__blob { background: var(--green); animation-delay: -4s; }
 .fcard:nth-child(3) .fcard__blob { background: var(--pink); animation-delay: -7s; }
@@ -1323,52 +1316,35 @@ button { cursor: pointer; }
 .stagger > * { will-change: transform, opacity; }
 
 /* ══════════════════════════════════════════════════════════
-   HERO — full-frame photos in a clean 2×2 grid.
-   Base rules are the mobile layout. A fixed-height middle
-   corridor keeps the logo clear of the photos on every screen.
+   HERO — full-bleed video backdrop with dark overlay so the
+   logo, tags and CTA stay obvious on every screen.
    ══════════════════════════════════════════════════════════ */
 .hero { height: 235svh; }
 
-.hero__photos {
-  position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 34vh auto;
-  align-content: center;
-  justify-items: center;
-  gap: 0 1.4rem;
-  padding: 6vh 6vw;
+.hero__media {
+  position: absolute; inset: 0; z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  background: #120c08;
 }
-
-.hero__photo {
-  margin: 0;
-  width: min(40vw, 20rem);
-  padding: .7rem .7rem 1.6rem;
-  background: #fffdf6;
-  border-radius: 1.3rem;
-  box-shadow: 0 1.5rem 3.4rem rgba(107, 62, 40, .3);
+.hero__video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
-.hero__photo img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: .6rem;
-  background: var(--tile);
+.hero__overlay {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(10, 7, 5, .42) 0%, rgba(10, 7, 5, .78) 78%),
+    linear-gradient(180deg, rgba(10, 7, 5, .55), rgba(10, 7, 5, .48) 55%, rgba(10, 7, 5, .72));
 }
-.hero__photo.--p1 { grid-area: 1 / 1; transform: rotate(-3.2deg); }
-.hero__photo.--p2 { grid-area: 1 / 2; transform: rotate(3.2deg); }
-.hero__photo.--p3 { grid-area: 3 / 1; transform: rotate(3deg); }
-.hero__photo.--p4 { grid-area: 3 / 2; transform: rotate(-3deg); }
 
 /* hero logo: always centered, scales with the viewport */
 .hero__logo { height: auto; }
 
-@media (min-width: 768px) {
-  .hero__photo { width: min(42vw, 23rem); }
-}
 @media (min-width: 1024px) {
   .hero { height: 260svh; }
-  .hero__photo { width: min(36vw, 24rem); }
 }
 
 /* ── Hero: phone polish (≤767px) ────────────────────────── */
@@ -1376,14 +1352,11 @@ button { cursor: pointer; }
   .hero__logo { width: min(74rem, 90vw); }
   .hero__tags { font-size: 1.15rem; letter-spacing: .18em; margin-top: 2.4rem; }
   .hero__cta { bottom: 2.8rem; gap: 1rem; }
-  .hero__blob.--c { display: none; }
 }
 @media (max-width: 360px) {
-  .hero__photo { width: min(40vw, 18rem); }
   .hero__tags { letter-spacing: .12em; font-size: 1.02rem; }
 }
 @media (orientation: landscape) and (max-height: 540px) {
-  .hero__photo { display: none; }
   .hero__tags { margin-top: 1.2rem; }
   .hero__cta { bottom: 1.6rem; }
 }
